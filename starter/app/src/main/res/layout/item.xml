@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/codename_textview"
-            style="@style/AsteroidTitle"
+            style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@{asteroid.codename}"
@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@+id/asteroid_date_textview"
-            style="@style/AsteroidDetail"
+            style="@style/DateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@{asteroid.closeApproachDate}"
