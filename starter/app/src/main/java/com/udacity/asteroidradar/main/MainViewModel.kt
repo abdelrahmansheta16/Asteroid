@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.Constants
@@ -41,9 +42,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
      */
     init {
         viewModelScope.launch {
-            asteroidRepository.refreshAsteroids()
-            asteroidRepository.refreshPicture()
-            _pictureOfDay.value=Network.devbytes.getPicture(Constants.API_KEY)
+            try {
+                asteroidRepository.refreshAsteroids()
+            }catch(exc:Exception){
+                Log.e("AsteroidViewModel",exc.message,exc)
+            }
+
+            try{
+                asteroidRepository.refreshPicture()
+                _pictureOfDay.value=Network.devbytes.getPicture(Constants.API_KEY)
+            }catch(exc:Exception){
+                Log.e("AsteroidViewModel",exc.message,exc)
+            }
         }
     }
 
