@@ -75,9 +75,9 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 @BindingAdapter("asteroidImageDescription")
 fun bindImageDescription(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
-        imageView.contentDescription = "The Asteroid is$isHazardous"
+        imageView.contentDescription = "The Asteroid is Hazardous"
     } else {
-        imageView.contentDescription = "The Asteroid is$isHazardous"
+        imageView.contentDescription = "The Asteroid is not Hazardous"
     }
 }
 
