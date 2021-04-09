@@ -18,16 +18,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         ALL
     }
     private val database = getDatabase(application)
+    private val _Nasteroid = MutableLiveData<Asteroid>()
+    val Nasteroid: MutableLiveData<Asteroid>
+        get() = _Nasteroid
     private val asteroidRepository = AsteroidRepository(database)
     private val _pictureOfDay = MutableLiveData<PictureOfDay>()
     val pictureOfDay: LiveData<PictureOfDay>
         get() = _pictureOfDay
 
     private var _filter = MutableLiveData(FilterAsteroid.ALL)
-
-    private val _Nasteroid = MutableLiveData<Asteroid>()
-    val Nasteroid: MutableLiveData<Asteroid>
-        get() = _Nasteroid
 
     val asteroids = Transformations.switchMap(_filter) {
         when (it!!) {
