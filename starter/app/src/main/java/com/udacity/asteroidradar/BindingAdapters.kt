@@ -31,16 +31,34 @@ fun bindTextViewToAstronomicalUnit(textView: TextView, number: Double) {
     textView.text = String.format(context.getString(R.string.astronomical_unit_format), number)
 }
 
+@BindingAdapter("astronomicalUnitDescription")
+fun bindDescriptionToAstronomicalUnit(textView: TextView, number: Double) {
+    val context = textView.context
+    textView.contentDescription = String.format(context.getString(R.string.astronomical_unit_format), number)
+}
+
 @BindingAdapter("kmUnitText")
 fun bindTextViewToKmUnit(textView: TextView, number: Double) {
     val context = textView.context
     textView.text = String.format(context.getString(R.string.km_unit_format), number)
 }
 
+@BindingAdapter("kmUnitDescription")
+fun bindDescriptionToKmUnit(textView: TextView, number: Double) {
+    val context = textView.context
+    textView.contentDescription = String.format(context.getString(R.string.km_unit_format), number)
+}
+
 @BindingAdapter("velocityText")
 fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
     val context = textView.context
     textView.text = String.format(context.getString(R.string.km_s_unit_format), number)
+}
+
+@BindingAdapter("velocityDescription")
+fun bindDescriptionToDisplayVelocity(textView: TextView, number: Double) {
+    val context = textView.context
+    textView.contentDescription = String.format(context.getString(R.string.km_s_unit_format), number)
 }
 
 @BindingAdapter("imageUrl")
@@ -51,6 +69,15 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         Picasso.with(imgView.context)
             .load(imgUri)
             .into(imgView)
+    }
+}
+
+@BindingAdapter("asteroidImageDescription")
+fun bindImageDescription(imageView: ImageView, isHazardous: Boolean) {
+    if (isHazardous) {
+        imageView.contentDescription = "The Asteroid is$isHazardous"
+    } else {
+        imageView.contentDescription = "The Asteroid is$isHazardous"
     }
 }
 
